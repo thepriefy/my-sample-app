@@ -1,3 +1,22 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <span class="navbar-brand">My App</span>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <p>Feel free to leave some message...</p>
+  <p><b>Name: </b><input type="text" name="userName" title="name" [(ngModel)]="userName"></p>
+  <p><b>Message: </b><input type="text" name="userText" title="comment text" [(ngModel)]="userText"></p>
+  <button class="btn btn-primary btn-sm" (click)="onPostMsg()">Post</button>
+</div>
+<div class="container">
+  <hr>
+  <b>Message: </b>
+  <div style="border: 1px solid dimgray; padding: 10px; margin: 10px 0;" *ngFor="let comment of comments; let i = index">
+    <p><b>Comment {{ i }} </b></p>
+    <p><b>Name: </b><span>{{ comment.name }}</span></p>
+    <p><b>Message:  </b><span>{{ comment.text }}</span></p>
+  </div>
+</div>

@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  comments: {name: string, text: string}[] = [
+    {name: 'testUser', text: 'Example text'}
+  ];
+
+  userName = '';
+  userText = '';
+
+  onPostMsg() {
+    this.comments.push({name: this.userName, text: this.userText});
+    this.userName = '';
+    this.userText = '';
+  }
 }
