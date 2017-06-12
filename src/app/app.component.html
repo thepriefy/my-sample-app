@@ -1,4 +1,4 @@
-<div class="col-sm-12">
+<div>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -10,12 +10,28 @@
     <p>Feel free to leave some message...</p>
     <p><b>Name: </b><input type="text" name="userName" title="name" [(ngModel)]="userName"></p>
     <p><b>Message: </b><input type="text" name="userText" title="comment text" [(ngModel)]="userText"></p>
-    <button class="btn btn-primary btn-sm" (click)="onPostMsg()">Post</button>
+    <button class="btn btn-primary btn-sm" (click)="addItem()">Post</button>
   </div>
+  <hr/>
   <div class="container">
-    <hr>
     <b>Message: </b>
-    <app-comment-item *ngFor="let commentItem of comments; let i = index" [comment]="commentItem" [commentId]="i+1"></app-comment-item>
+    <div style="border: 1px solid dimgray; padding: 10px; margin: 10px 0;" *ngFor="let commentItem of comments | async">
+      <p><b>Name: </b><span>{{ commentItem.name }}</span></p>
+      <p><b>Message:  </b><span>{{ commentItem.text }}</span></p>
+      <div>
+        <button class="btn btn-danger" (click)="deleteItem(commentItem.$key)">Delete</button>
+      </div>
+    </div>
+  </div>
+  <hr/>
+  <div class="container" style="border: 1px solid lightgray; padding: 10px; margin: 10px;">
+    <b>Source: </b>
+    <ol>
+      <li><a href="https://github.com/angular/angularfire2/tree/master/docs" target="_blank">Angular fire 2 docs</a></li>
+      <li><a href="https://coursetro.com/posts/code/54/Angular-4-Firebase-Tutorial:-Make-a-Simple-Angular-4-App" target="_blank">Angular 4 Firebase Tutorial: Make a Simple Angular 4 App</a></li>
+      <li><a href="https://stackoverflow.com/questions/43428415/error-in-firebase-app-shared-promise-js" target="_blank">Fix ERROR in ./~/firebase/app/shared_promise.js (after install firebase2)</a></li>
+    </ol>
   </div>
 </div>
+
 
